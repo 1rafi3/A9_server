@@ -1,5 +1,11 @@
 {
   "version": 2,
+  "env": {
+    "BETTER_AUTH_URL": "https://client-two-omega-46.vercel.app",
+    "PUBLIC_SERVER_URL": "https://client-two-omega-46.vercel.app",
+    "CORS_ORIGINS": "https://client-two-omega-46.vercel.app,https://client-lnxcrj56o-rwolkorimrafi-1631s-projects.vercel.app,http://localhost:5173",
+    "CLIENT_ORIGINS": "https://client-two-omega-46.vercel.app,https://client-lnxcrj56o-rwolkorimrafi-1631s-projects.vercel.app,http://localhost:5173"
+  },
   "builds": [
     {
       "src": "server.js",

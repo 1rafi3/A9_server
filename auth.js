@@ -55,4 +55,5 @@ export const auth = betterAuth({
   },
   secret: process.env.BETTER_AUTH_SECRET || "sportnest-auth-secret-key-for-session-signing-2026",
   trustedOrigins,
+  baseURL: process.env.BETTER_AUTH_URL || process.env.PUBLIC_SERVER_URL || "http://localhost:5000",
 });
