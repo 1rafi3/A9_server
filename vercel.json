@@ -1,10 +1,11 @@
 {
   "version": 2,
   "env": {
-    "BETTER_AUTH_URL": "https://a09server.vercel.app",
+    "BETTER_AUTH_URL": "https://a09client.vercel.app",
     "PUBLIC_SERVER_URL": "https://a09server.vercel.app",
     "CORS_ORIGINS": "https://a09client.vercel.app,http://localhost:5173",
-    "CLIENT_ORIGINS": "https://a09client.vercel.app,http://localhost:5173"
+    "CLIENT_ORIGINS": "https://a09client.vercel.app,http://localhost:5173",
+    "BETTER_AUTH_TRUSTED_ORIGINS": "https://a09client.vercel.app,https://a09server.vercel.app,http://localhost:5173"
   },
   "builds": [
     {

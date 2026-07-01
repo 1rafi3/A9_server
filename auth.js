@@ -51,6 +51,15 @@ function getAuthServerOrigin() {
   );
 }
 
+function getPublicServerOrigin() {
+  return normalizeOrigin(
+    process.env.PUBLIC_SERVER_URL ||
+    process.env.BETTER_AUTH_URL ||
+    process.env.VERCEL_URL ||
+    "http://localhost:5000"
+  );
+}
+
 const trustedOrigins = [...new Set([
   ...parseOriginList(
   process.env.BETTER_AUTH_TRUSTED_ORIGINS || process.env.CORS_ORIGINS || process.env.CLIENT_ORIGINS || process.env.APP_ORIGIN,
@@ -66,6 +75,7 @@ const trustedOrigins = [...new Set([
   ]
   ),
   getAuthServerOrigin(),
+  getPublicServerOrigin(),
 ].map(normalizeOrigin).filter(Boolean))];
 
 export const auth = betterAuth({
