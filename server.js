@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 
 import { db } from "./db.js";
 import { auth } from "./auth.js";
-import { verifyJWT, verifyOwner } from "./middleware.js";
+import { verifyJWT, verifyOwner } from "./middleware-express.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
