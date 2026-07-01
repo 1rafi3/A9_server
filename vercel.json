@@ -7,16 +7,10 @@
     "CLIENT_ORIGINS": "https://a09client.vercel.app,http://localhost:5173",
     "BETTER_AUTH_TRUSTED_ORIGINS": "https://a09client.vercel.app,https://a09server.vercel.app,http://localhost:5173"
   },
-  "builds": [
+  "rewrites": [
     {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.js"
+      "source": "/(.*)",
+      "destination": "/api/index"
     }
   ]
 }
