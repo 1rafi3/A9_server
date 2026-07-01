@@ -43,3 +43,4 @@ This is the backend for the SportNest sports facility booking management system.
 - The server exposes `GET /` and `GET /health` for hosting checks.
 - Private routes fall back to the Better Auth session if the JWT cookie is missing, which helps keep logged-in users signed in on page reload.
 - For production, set `CORS_ORIGINS` and `BETTER_AUTH_TRUSTED_ORIGINS` to your deployed frontend URL so cookies and auth callbacks work correctly.
+- Set `BETTER_AUTH_URL` and `PUBLIC_SERVER_URL` to the deployed server origin, not the client origin.

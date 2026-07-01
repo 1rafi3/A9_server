@@ -26,8 +26,8 @@ const client = new MongoClient(mongoUri, {
   serverSelectionTimeoutMS: 10000,
 });
 
-// Connect once top-level to ensure the database is ready when imported
-// await client.connect();
+// Connect once top-level to ensure the database is ready when imported.
+await client.connect();
 console.log("Successfully connected to MongoDB");
 
 export const db = client.db();

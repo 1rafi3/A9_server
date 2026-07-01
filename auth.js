@@ -25,7 +25,34 @@ function parseOriginList(value, fallback) {
   return [];
 }
 
-const trustedOrigins = parseOriginList(
+function normalizeOrigin(value) {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return "";
+  }
+
+  try {
+    return new URL(trimmed).origin;
+  } catch {
+    return trimmed.replace(/\/$/, "");
+  }
+}
+
+function getAuthServerOrigin() {
+  return normalizeOrigin(
+    process.env.BETTER_AUTH_URL ||
+    process.env.PUBLIC_SERVER_URL ||
+    process.env.VERCEL_URL ||
+    "http://localhost:5000"
+  );
+}
+
+const trustedOrigins = [...new Set([
+  ...parseOriginList(
   process.env.BETTER_AUTH_TRUSTED_ORIGINS || process.env.CORS_ORIGINS || process.env.CLIENT_ORIGINS || process.env.APP_ORIGIN,
   [
     "http://localhost:5173",
@@ -37,7 +64,9 @@ const trustedOrigins = parseOriginList(
     "http://localhost:5000",
     "http://127.0.0.1:5000"
   ]
-);
+  ),
+  getAuthServerOrigin(),
+].map(normalizeOrigin).filter(Boolean))];
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {

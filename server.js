@@ -499,6 +499,10 @@ app.use((req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`SportNest Server is running on port ${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`SportNest Server is running on port ${PORT}`);
+  });
+}
+
+export default app;
